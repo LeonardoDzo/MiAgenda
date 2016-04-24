@@ -1,0 +1,27 @@
+<h1>Listing asignatures</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Tittle</th>
+      <th>Semester</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @asignatures.each do |asignature| %>
+      <tr>
+        <td><%= asignature.tittle %></td>
+        <td><%= asignature.semester %></td>
+        <td><%= link_to 'Show', asignature %></td>
+        <td><%= link_to 'Edit', edit_asignature_path(asignature) %></td>
+        <td><%= link_to 'Destroy', asignature, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Asignature', new_asignature_path %>

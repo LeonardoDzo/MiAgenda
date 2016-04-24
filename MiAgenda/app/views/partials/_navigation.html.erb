@@ -1,0 +1,47 @@
+<header>
+    
+    <nav>
+    <% if user_signed_in? %>
+         <ul id="slide-out" class="side-nav">
+          
+          <li><a><h4>Mis Materias</h4></a></li>
+          <a href="#!" class="teal darken-2" style="color: white; text-align: center;">PROLOG</a>
+        </ul>
+        <a href="#" data-activates="slide-out" class="button-collapse show-on-large"><i class="mdi-navigation-menu"></i></a>
+        
+    <%end%>
+    <div class="nav-wrapper  blue-grey darken-2">
+      <a class="brand-logo center"><%= link_to "Mi Agenda", root_path, class:"center"%></a>
+      <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li class="col-md">
+            <% if user_signed_in? %>
+                <%= current_user.email %>
+            <%end%>
+        </li>
+        <% if user_signed_in? %>
+            <li class="col-md">
+                <%= link_to "Cerrar Sesión", destroy_user_session_path, method: :delete %>    
+            </li>
+            <div class="container">
+                <div class="row">
+                    <div class="fixed-action-btn horizontal" style="bottom: 0px; right: 24px;">
+                        <a href= "duties/new"class="btn-floating btn-large red">
+                        
+                        <i class="large material-icons">add </i></a>
+                        
+                    </div>
+                </div>
+            </div>
+        <%else %>
+            <li class="col-md">
+                <%= link_to "Iniciar Sesión", new_user_session_path%>
+            </li>
+            <li class="col-md">
+                <%= link_to "Regittrarte", new_user_registration_path%>
+            </li>
+        <%end %>
+      </ul>
+    </div>
+    
+</header>

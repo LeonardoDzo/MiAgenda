@@ -1,0 +1,37 @@
+<%= form_for(@duty)  do |f|  %>
+    <div class="container ">
+    <% if @duty.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@duty.errors.count, "error") %> prohibited this duty from being saved:</h2>
+        <ul>
+        <% @duty.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <div class="input-field col s6">
+      <%= f.label :tittle %><br>
+      <%= f.text_field :tittle %>
+    </div>
+    <div class="input-field col s6">
+      <%= f.label :body %><br>
+      <%= f.text_area :body, class:"materialize-textarea" %>
+    </div>
+    
+    <div class="input-field col s6">
+      <%= f.label :priority %><br>
+      <p class="range-field">
+      <%= f.range_field :priority, :min=>0, :max=>100, :class=>"slide", :id=>"slider1"%>
+    </div>
+
+    <div class="input-field col s6">
+      <%= f.label :date_of_delivery %><br>
+      <%= f.date_field :date_of_delivery, class:"datepicker" %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit "Enviar", class:"waves-effect waves-light btn-large center-align"%>
+    </div>
+    </div>
+  <% end %>

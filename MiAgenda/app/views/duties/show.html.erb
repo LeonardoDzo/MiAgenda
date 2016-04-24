@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @duty.user %>
+</p>
+
+<p>
+  <strong>Tittle:</strong>
+  <%= @duty.tittle %>
+</p>
+
+<p>
+  <strong>Body:</strong>
+  <%= @duty.body %>
+</p>
+
+<p>
+  <strong>Date of delivery:</strong>
+  <%= @duty.date_of_delivery %>
+</p>
+
+<p>
+  <strong>Priority:</strong>
+  <%= @duty.priority %>
+</p>
+
+<%= link_to 'Edit', edit_duty_path(@duty) %> |
+<%= link_to 'Back', duties_path %>

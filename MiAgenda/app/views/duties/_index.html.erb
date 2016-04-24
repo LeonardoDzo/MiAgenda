@@ -1,0 +1,40 @@
+<h1>Tareas pendientes</h1>
+<div class="row section scrollspy">
+      <!-- Page Content goes here -->
+      <% @duties.each do |duty| %>
+        <%if current_user.id == duty.user_id &&  duty.date_of_delivery > Time.now %>
+          <div class="row">
+          <div class="col s4 m0">
+          <div class="card">
+           <% puts case duty.priority %>
+           <% when 0..20 %>
+            <div class="card brown darken-2">
+           <% when 21..40 %>
+           <div class="card purple darken-2">
+           <% when 41..60 %>
+           <div class="card green darken-2">
+           <% when 61..80 %>
+           <div class="card blue darken-2">
+           <% when 81..100 %>
+           <div class="card red darken-2">
+           <%end%>
+            
+            <div class="card-content white-text">
+              <span class="card-title"><%= duty.tittle %></span>
+              <p><%= duty.body %>.</p>
+              <i class="small material-icons middle-xs">today</i><%= duty.date_of_delivery %>
+            </div>
+            <div class="card-action">
+              <a><%= link_to 'Edit', edit_duty_path(duty) %></a>
+              <a><%= link_to 'Destroy', duty, method: :delete, data: { confirm: 'Are you sure?' } %></a>
+            </div>
+          </div>
+          </div>
+         </div>
+        <%end%>
+      <%end%>
+
+  </div>
+
+
+
